@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import Task from "./Task";
 
 const App = () => {
   const [todoList, setTodoList] = useState([]);
@@ -10,14 +11,19 @@ const App = () => {
   };
 
   const addTask = () => {
-    const newTodoList = [...todoList, newTask];
+    const task = {
+      id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
+      taskName: newTask,
+    };
+    const newTodoList = [...todoList, task];
+
     setTodoList(newTodoList);
   };
 
-  const deleteTask = (taskName) => {
+  const deleteTask = (id) => {
     const newTodoList = todoList.filter((task) => {
       // return task !== taskName;
-      if (task === taskName) {
+      if (task.id === id) {
         return false; // this task doesn't want keeping
       } else {
         return true; // this task wants keeping
@@ -36,10 +42,11 @@ const App = () => {
         <div className="list">
           {todoList.map((task) => {
             return (
-              <div>
-                <h1>{task}</h1>
-                <button onClick={() => deleteTask(task)}>X</button>
-              </div>
+              <Task
+                taskName={task.taskName}
+                id={task.id}
+                deleteTask={deleteTask}
+              />
             );
           })}
         </div>
