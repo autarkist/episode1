@@ -1,18 +1,13 @@
 import React from "react";
 import "./App.css";
-import User from "./User.js";
+import { planets } from "./planets.js";
 
 const App = () => {
-  const users = [
-    { name: "Pedro", age: 21 },
-    { name: "Jake", age: 25 },
-    { name: "Jessica", age: 30 },
-  ];
   return (
     <div className="App">
-      {users.map((user, key) => {
-        return <User name={user.name} age={user.age} />;
-      })}
+      {planets.map(
+        (planet, key) => !planet.isGasPlanet && <h1>{planet.name}</h1>
+      )}
     </div>
   );
 };
