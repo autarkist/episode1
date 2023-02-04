@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  font-size: 3em;
 }
 
 .App-logo {
@@ -41,13 +40,4 @@
 
 .name {
   color: red;
-}
-
-div {
-  margin-top: 10px;
-}
-
-div>button {
-  margin: 10px;
-  font-size: 1.5rem;
 }
